@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const timeDisplay = document.querySelector('#time');
 
     let score = 0;
-    let time = 30;
+    let time = 5;
     let gameInterval = null;
     let box = null;
 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function startGame() {
         score = 0;
-        time = 30;
+        time = 5;
         
         scoreDisplay.textContent = score;
         timeDisplay.textContent = time;
@@ -52,11 +52,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 clearInterval(gameInterval);
                 alert('Game Over');
                 box.remove();
+            } else {
+                createBox();
             }
-
-            createBox();
+            
         }, 1000);
     }
     
     startGame();
+
+    document.querySelector('#newGame').addEventListener('click', function() {
+        resetGame();
+    });
+
+    function resetGame() {
+        clearInterval(gameInterval);
+        time = 5;
+        score = 0;
+        scoreDisplay.textContent = score;
+        timeDisplay.textContent = time;
+
+        startGame();
+    }
 });
