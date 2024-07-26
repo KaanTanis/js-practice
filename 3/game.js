@@ -32,6 +32,13 @@ export default class Game {
         const activeButton = this.difficultLevel.querySelector('.active');
         const level = activeButton ? activeButton.dataset.level : 'medium';
 
+        this.difficultLevel.querySelectorAll('button').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.level === level) {
+                btn.classList.add('active');
+            }
+        });
+
         switch (level) {
             case 'easy':
                 return { time: 15, boxSize: 60 };
