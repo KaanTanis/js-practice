@@ -3,8 +3,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const scoreDisplay = document.querySelector('#score');
     const timeDisplay = document.querySelector('#time');
 
-    let score = 0;
-    let time = 5;
+    const initScore = 0;
+    const initTime = 5;
+
+    let time = initTime;
+    let score = initScore;
+    
     let gameInterval = null;
     let box = null;
 
@@ -32,12 +36,13 @@ document.addEventListener('DOMContentLoaded', function() {
             score++;
             scoreDisplay.textContent = score;
             box.remove();
-        })
+            createBox();
+        });
     }
 
     function startGame() {
-        score = 0;
-        time = 5;
+        score = initScore;
+        time = initTime;
         
         scoreDisplay.textContent = score;
         timeDisplay.textContent = time;
@@ -51,9 +56,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (time === 0) {
                 clearInterval(gameInterval);
                 alert('Game Over');
-                box.remove();
-            } else {
-                createBox();
+                if (box) {
+                    box.remove();
+                }
             }
             
         }, 1000);
@@ -67,8 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function resetGame() {
         clearInterval(gameInterval);
-        time = 5;
-        score = 0;
+        time = initTime;
+        score = initScore;
         scoreDisplay.textContent = score;
         timeDisplay.textContent = time;
 
