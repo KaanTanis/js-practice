@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newGameButton = document.querySelector('#newGame');
 
     const initScore = 0;
-    const initTime = 5;
+    const initTime = 30;
 
     const game = new Game(gameArea, scoreDisplay, timeDisplay, initScore, initTime);
 

@@ -15,8 +15,8 @@ export default class Game {
     }
 
     getRandomPosition() {
-        const x = Math.floor(Math.random() * this.gameArea.clientWidth - 50);
-        const y = Math.floor(Math.random() * this.gameArea.clientHeight - 50);
+        const x = Math.floor(Math.random() * (this.gameArea.clientWidth - 50));
+        const y = Math.floor(Math.random() * (this.gameArea.clientHeight - 50));
 
         return { x, y };
     }
@@ -65,6 +65,11 @@ export default class Game {
 
     resetGame() {
         clearInterval(this.gameInterval);
+        this.time = this.initTime;
+        this.score = this.initScore;
+
+        this.scoreDisplay.textContent = this.score;
+        this.timeDisplay.textContent = this.time;
 
         this.startGame();
     }
@@ -75,7 +80,8 @@ export default class Game {
             localStorage.setItem('highestScore', this.highestScore);
         }
 
-        alert(`Game Over! Your score: ${this.score}. Highest score: ${this.highestScore}`);
-        this.resetGame();
+        alert(
+          `Game Over! Your score: ${this.score}. Highest score: ${this.highestScore}`
+        );
     }
 }
