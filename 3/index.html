@@ -37,10 +37,22 @@
             flex-direction: column;
             align-items: center;
         }
+
+        .active {
+            background-color: #000;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
     <div id="gameArea"></div>
+
+    <div id="difficultLevel">
+        <button data-level="easy" class="active">easy</button>
+        <button data-level="medium">medium</button>
+        <button data-level="hard">hard</button>
+    </div>
+
     <div id="controls">
         <p>Score: <span id="score">0</span></p>
         <p>Time: <span id="time">5</span></p>
